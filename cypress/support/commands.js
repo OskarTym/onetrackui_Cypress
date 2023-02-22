@@ -217,6 +217,19 @@ Cypress.Commands.add('createNewInvoice', (customerName, itemsCount, discountType
 
   // Get total price after discount
 
+  /*
+  cy.get('.invoice-total > tbody > tr:nth-child(5)')
+  .within(() => {
+    cy.get('td').eq(1)
+      .invoke('text')
+      .then((text) => {
+        const tp = parseFloat(text.match(/[-+]?[0-9]*\.?[0-9]+/g)[0]);
+        cy.log(tp);
+        totalPrices.push(tp);
+      });
+  });
+   */
+
   cy.get('.invoice-total > tbody > tr').eq(4).then((row) => {
     cy.wrap(row).within(() => {
       cy.get('td').eq(1).then((el) => {
